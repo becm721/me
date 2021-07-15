@@ -26,7 +26,39 @@ def advancedGuessingGame():
     purpose if you can!
     """
 
-    return "You got it!"
+    print("\nWelcome to the guessing game!")
+    print("A number between _ and _ ?")
+    lowerBound = input("Enter a lower bound: ")
+    upperBound = input("Enter an upper bound: ")
+    print("OK then, a number between {} and {} ?".format(lowerBound, upperBound))
+    lowerBound = int(lowerBound)
+    upperBound = int(upperBound)
+
+    actualNumber = random.randint(lowerBound, upperBound)
+
+    guessed = False
+
+    while not guessed:
+        try:
+            guessedNumber = int(input("Guess a number: "))
+            print("You guessed {},".format(guessedNumber),)
+            if guessedNumber == actualNumber:
+                print("You got it!! It was {}".format(actualNumber))
+                guessed = True
+            elif guessedNumber < actualNumber:
+                print("Too small, try again :'(")
+            elif guessedNumber > actualNumber:
+                print("Too big, try again :'(")
+            return "You got it!"
+        except Exception as general_error:
+            print(general_error)
+        except TypeError as my_error:
+            print(f"You don't got it! {my_error}")
+        except ValueError as my_error:
+            print(f"You don't got it! {my_error}")
+        finally:
+            print("--------------")
+
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 

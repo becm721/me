@@ -3,8 +3,10 @@
 
 
 import math
+from typing import Sequence
 
 # import time
+import math
 
 
 def binary_search(low, high, actual_number):
@@ -27,7 +29,43 @@ def binary_search(low, high, actual_number):
     tries = 0
     guess = 0
 
-    # Write your code in here
+    # Taking Inputs
+    lower = int(input("Enter Lower bound:- "))
+    upper = int(input("Enter Upper bound:- "))
+
+    # generating random number between the lower and upper
+    x = math.randint(lower, upper)
+    print(
+        "\n\tYou've only ",
+        round(math.log(upper - lower + 1, 2)),
+        " chances to guess the integer!\n",
+    )
+
+    # Initializing the number of guesses.
+    tries = 0
+
+    # for calculation of minimum number of
+    # guesses depends upon range
+    while tries < math.log(upper - lower + 1, 2):
+        tries += 1
+
+    # taking guessing number as input
+    guess = int(input("Guess a number:- "))
+
+    # Condition testing
+    if x == guess:
+        print("Congratulations you did it in ", tries, " try")
+        # Once guessed, loop will break
+        breakpoint
+    elif x > guess:
+        print("You guessed too small!")
+    elif x < guess:
+        print("You Guessed too high!")
+
+    # If Guessing is more than required guesses,shows this output.
+    if tries >= math.log(upper - lower + 1, 2):
+        print("\nThe number is %d" % x)
+        print("\tBetter Luck Next time!")
 
     return {"guess": guess, "tries": tries}
 
@@ -38,3 +76,4 @@ if __name__ == "__main__":
     print(binary_search(1, 100, 95))
     print(binary_search(1, 51, 5))
     print(binary_search(1, 50, 5))
+
