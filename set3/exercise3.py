@@ -50,8 +50,8 @@ def advancedGuessingGame():
             elif guessedNumber > actualNumber:
                 print("Too big, try again :'(")
             return "You got it!"
-        except Exception as general_error:
-            print(general_error)
+        except Exception as e:
+            print("errr, try again ({})".format(e))
         except TypeError as my_error:
             print(f"You don't got it! {my_error}")
         except ValueError as my_error:

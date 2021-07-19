@@ -6,7 +6,6 @@ import math
 from typing import Sequence
 
 # import time
-import math
 
 
 def binary_search(low, high, actual_number):
@@ -28,44 +27,17 @@ def binary_search(low, high, actual_number):
     """
     tries = 0
     guess = 0
-
-    # Taking Inputs
-    lower = int(input("Enter Lower bound:- "))
-    upper = int(input("Enter Upper bound:- "))
-
-    # generating random number between the lower and upper
-    x = math.randint(lower, upper)
-    print(
-        "\n\tYou've only ",
-        round(math.log(upper - lower + 1, 2)),
-        " chances to guess the integer!\n",
-    )
-
-    # Initializing the number of guesses.
-    tries = 0
-
-    # for calculation of minimum number of
-    # guesses depends upon range
-    while tries < math.log(upper - lower + 1, 2):
-        tries += 1
-
-    # taking guessing number as input
-    guess = int(input("Guess a number:- "))
-
-    # Condition testing
-    if x == guess:
-        print("Congratulations you did it in ", tries, " try")
-        # Once guessed, loop will break
-        breakpoint
-    elif x > guess:
-        print("You guessed too small!")
-    elif x < guess:
-        print("You Guessed too high!")
-
-    # If Guessing is more than required guesses,shows this output.
-    if tries >= math.log(upper - lower + 1, 2):
-        print("\nThe number is %d" % x)
-        print("\tBetter Luck Next time!")
+    low = 0
+    high = (high - low) - 1
+    while low <= high:
+        guess = math.floor((high + low) / 2)
+    if (high - low)[guess] == actual_number:
+        return guess
+    elif (high - low)[guess] < actual_number:
+        low = guess + 1
+    else:
+        high = guess - 1
+        return {-1}
 
     return {"guess": guess, "tries": tries}
 
