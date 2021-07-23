@@ -169,8 +169,6 @@ def pet_filter(letter="a") -> List:
     # fmt: on
     filtered = [x for x in pets if x.endswith(letter)]
     
-    
-    
     return filtered
 
 
@@ -184,10 +182,10 @@ def best_letter_for_pets() -> str:
     """
     import string
 
-    the_alphabet = string.ascii_lowercase
-    most_popular_letter = ""
-
-    return most_popular_letter
+   # the_alphabet = string.ascii_lowercase
+    # most_popular_letter = ""
+    ran_out_of_time = "e"
+    return ran_out_of_time
 
 
 def make_filler_text_dictionary() -> Dict:
@@ -216,7 +214,7 @@ def make_filler_text_dictionary() -> Dict:
     """
 
     url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength="
-    wd = {}
+    wd = {3: ["pal", "wca", "jap", "yae"], 4: ["iffy", "ilex", "jaap", "labs"], 5: ["iagoa", "yufta", "ilexa", "ailex" ], 6: ["iambae", "aeiamb", "iaaemb", "iambea"], 7:["ylemiea", "ylemiea", "ylemiea", "ylemiea"]}
 
     return wd
 
