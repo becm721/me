@@ -7,7 +7,6 @@ from typing import Sequence
 
 # import time
 
-
 def binary_search(low, high, actual_number):
     """Do a binary search.
 
@@ -27,13 +26,14 @@ def binary_search(low, high, actual_number):
     """
     tries = 0
     guess = 0
-    low = 0
-    high = (high - low) - 1
+
+    low = low
+    high = Sequence - 1
     while low <= high:
         guess = math.floor((high + low) / 2)
-    if (high - low)[guess] == actual_number:
+    if  Sequence[guess] == actual_number:
         return guess
-    elif (high - low)[guess] < actual_number:
+    elif Sequence[guess] < actual_number:
         low = guess + 1
     else:
         high = guess - 1
