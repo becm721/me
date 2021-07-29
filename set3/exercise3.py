@@ -28,37 +28,56 @@ def advancedGuessingGame():
 
     print("\nWelcome to the guessing game!")
     print("A number between _ and _ ?")
-    lowerBound = input("Enter a lower bound: ")
-    upperBound = input("Enter an upper bound: ")
-    print("OK then, a number between {} and {} ?".format(lowerBound, upperBound))
-    lowerBound = int(lowerBound)
+    upperBound = False
+    while type(upperBound) is not int:
+        try:
+            upperBound=int(input("Enter an upper bound value: "))
+        except ValueError:
+            print('This is not an integer!')
+
+    lowerBound = False
+    while type(lowerBound) is not int:
+        try:
+            lowerBound = int(input("Enter a lower bound value: "))
+        except ValueError:
+            print('This is not an integer!')
+
     upperBound = int(upperBound)
+    lowerBound = int(lowerBound)
+
+    if lowerBound > upperBound:
+        temp = lowerBound
+        lowerBound = upperBound
+        upperBound = temp
+        print('Please pick a number between the bounds')
+
+    print("Pick a number between " + str(lowerBound) + " and {} ?".format(upperBound))    
 
     actualNumber = random.randint(lowerBound, upperBound)
 
     guessed = False
 
     while not guessed:
-        try:
-            guessedNumber = int(input("Guess a number: "))
-            print("You guessed {},".format(guessedNumber),)
-            if guessedNumber == actualNumber:
-                print("You got it!! It was {}".format(actualNumber))
-                guessed = True
-            elif guessedNumber < actualNumber:
-                print("Too small, try again :'(")
-            elif guessedNumber > actualNumber:
-                print("Too big, try again :'(")
-            return "You got it!"
-        except Exception as e:
-            print("errr, try again ({})".format(e))
-        except TypeError as my_error:
-            print(f"You don't got it! {my_error}")
-        except ValueError as my_error:
-            print(f"You don't got it! {my_error}")
-        finally:
-            print("--------------")
+        guessedNumber = False
+        while type(guessedNumber) is not int:
+            try:
+                guessedNumber = int(input("Guess a number: "))
+            except ValueError:
+                print('Please try again with an integer')
 
+        print("You guessed {},".format(guessedNumber),)
+        if guessedNumber == actualNumber:
+            print('You got it!')
+            guessed = True
+        elif guessedNumber < actualNumber:
+            print("Too small, try again")
+        else:
+            print("Too big, try again")
+        if guessedNumber < lowerBound:
+            print('That is the lower bound try again please')
+        elif guessedNumber > upperBound:
+          print('That is the upper bound try again please')
+    return "You got it!"
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 
